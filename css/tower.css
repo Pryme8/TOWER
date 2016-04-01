@@ -114,9 +114,12 @@ tower main .menu-top-item  > .menu-sub{
 	padding: 0;
 }
 
-tower main .menu-top-item:hover  > .menu-sub{
-	display: block;
+tower main .menu-top-item .menu-sub .menu-item:hover{
 	color:white;
+}
+
+tower main .menu-top-item .menu-sub .menu-item:hover > .menu-sub{
+	display: block;
 }
 
 tower main .menu-top-item .menu-sub:hover{
