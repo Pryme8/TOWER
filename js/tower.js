@@ -31,24 +31,25 @@ var createScene = function() {
 
 var scene = createScene();
 
-
 parent.CORE.engine.runRenderLoop(function() {
     scene.render();
 });
 
-
-
-
-//ALWAYS LISTEN FOR RESIZE!
 $(window).bind('resize', function() {
     parent.CORE.engine.resize();
 });
 	
+this._start();
 	
-	
+}
+
+TOWER.prototype._start = function(){
+	this.DOM.logoBig = $(TOWER.ELEMENTS.logoBig);
+	this.DOM.Master.append(this.DOM.logoBig);
 }
 
 TOWER.ELEMENTS = {
 	canvas : '<canvas id="renderCanvas"></canvas>',
+	logoBig : '<logo class="big" />'
 };
 
