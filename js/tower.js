@@ -2,6 +2,7 @@
 TOWER = function(){
 	this.CORE = {
 		engine : null,
+		scene : null,
 		scenes : [],
 		objects : [],	
 		};
@@ -14,9 +15,40 @@ TOWER.prototype._init = function(){
 	this.DOM.canvas = $(TOWER.ELEMENTS.canvas);
 	this.DOM.Master.append(this.DOM.canvas);
 	
+	var canvas = document.getElementById('renderCanvas');
+	this.CORE.engine = new BABYLON.Engine(canvas, true);
+	var parent = this;
+	
+var createScene = function() {
+    var scene = new BABYLON.Scene(parent.CORE.engine);
+    var camera = new BABYLON.FreeCamera('3d_Camera', new BABYLON.Vector3(0, 5,-10), scene);
+    camera.setTarget(BABYLON.Vector3.Zero());
+    camera.attachControl(canvas, false);
+	scene.activeCamera = camera;
+    var defaultLight = new BABYLON.HemisphericLight('defaultLight', new BABYLON.Vector3(-0.5,1,0.2), scene);
+    return scene;
+}
 
+var scene = createScene();
+
+
+parent.CORE.engine.runRenderLoop(function() {
+    scene.render();
+});
+
+
+
+
+//ALWAYS LISTEN FOR RESIZE!
+$(window).bind('resize', function() {
+    parent.CORE.engine.resize();
+});
+	
+	
+	
 }
 
 TOWER.ELEMENTS = {
 	canvas : '<canvas id="renderCanvas"></canvas>',
 };
+
