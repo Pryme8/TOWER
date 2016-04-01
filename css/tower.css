@@ -85,6 +85,9 @@ tower main{
 	left:0;
 	padding-left:80px;	
 }
+tower main select#mode{
+	float:right;	
+}
 
 tower main .menu-top-item {
 	position: relative;

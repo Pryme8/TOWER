@@ -105,6 +105,12 @@ TOWER.ELEMENTS = {
 				'<span class="menu-item">About</span>'+
 			'</span>'+			
 		'</span>'+
+		'<select id="mode" value="Scene">'+
+		'<option>Scene</option>'+
+		'<option>Modeler</option>'+
+		'<option>Scripter</option>'+
+		'<option>Painter</option>'+
+		'</select>'+
 	'</main>',
 	toolBar : '<tools></tools>',
 };
