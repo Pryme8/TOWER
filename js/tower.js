@@ -46,11 +46,14 @@ this._start();
 TOWER.prototype._start = function(){
 	this.DOM.logoBig = $(TOWER.ELEMENTS.logoBig);
 	this.DOM.Master.append(this.DOM.logoBig);
-	this.DOM.logoBig.fadeIn(600, function(){});
+	this.DOM.logoBig.fadeIn(1800, function(){});
+	this.DOM.mainMenu = $(TOWER.ELEMENTS.mainMenu);
+	this.DOM.Master.append(this.DOM.mainMenu);
 }
 
 TOWER.ELEMENTS = {
 	canvas : '<canvas id="renderCanvas"></canvas>',
-	logoBig : '<logo class="big" />'
+	logoBig : '<logo class="big" />',
+	mainMenu : '<main><span class="menu-top-item">Project</span></main>',
 };
 

@@ -51,3 +51,14 @@ tower logo.big{
 	transform:translate(-50%,-50%);	
 	display:none;
 }
+
+tower main{
+	position:absolute;
+	width:100%;
+	font-size:18px;
+	height:1.5em;
+	background-color:#FB5E28;
+	top:0;
+	left:0;
+	padding-left:180px;	
+}
