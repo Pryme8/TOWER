@@ -51,6 +51,17 @@ TOWER.prototype._start = function(){
 	this.DOM.Master.append(this.DOM.mainMenu);
 	this.DOM.toolBar = $(TOWER.ELEMENTS.toolBar);
 	this.DOM.Master.append(this.DOM.toolBar);
+	
+	
+	this.DOM.logoBig.animate({
+    opacity: 0.5,
+    left: "0.5em",
+	top: "0.5em",
+	width: "64px",
+	height: "64px",
+  }, 3200, function() {
+    // Animation complete.
+  });
 }
 
 TOWER.ELEMENTS = {
