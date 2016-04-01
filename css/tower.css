@@ -75,3 +75,49 @@ tower main{
 	left:0;
 	padding-left:80px;	
 }
+
+tower main .menu-top-item {
+	position: relative;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	width: 120px;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: center;
+	cursor: pointer;
+}
+
+tower main .menu-top-item:hover{
+	color: #999;
+}
+
+tower main .menu-top-item  > .menu-sub{
+	display: none;
+	text-align: left;
+	font-size: 0.8em;
+	white-space: nowrap;
+	border-bottom: 1px solid black;
+	background:#AA2759;
+	position: absolute;
+	width: 100%;
+	left:0;
+	padding: 0;
+}
+
+tower main .menu-top-item:hover  > .menu-sub{
+	display: block;
+	color:white;
+}
+
+tower main .menu-top-item .menu-sub:hover{
+	display: block;
+	color:#999;
+}
+
+tower main .menu-item{
+	position: relative;
+	width: 100%;
+	padding: 1em;
+	padding-top: 0;
+	padding-bottom: 0;
+}
