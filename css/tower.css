@@ -57,8 +57,21 @@ tower main{
 	width:100%;
 	font-size:18px;
 	height:1.5em;
-	background-color:#FB5E28;
+	line-height:1.5em;
+	color:#FFF;
+	text-shadow:
+	0px 1px #000,
+	1px 0px #000,
+	0px -1px #000,
+	-1px 0px #000,
+	1px 1px #000,
+	-1px 1px #000,
+	1px -1px #000,
+	-1px -1px #000;
+	font-family:"Courier New", Courier, monospace;
+	font-weight:bold;	
+	background-color:#831338;
 	top:0;
 	left:0;
-	padding-left:180px;	
+	padding-left:80px;	
 }
