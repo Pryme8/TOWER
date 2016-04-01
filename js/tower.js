@@ -54,6 +54,6 @@ TOWER.prototype._start = function(){
 TOWER.ELEMENTS = {
 	canvas : '<canvas id="renderCanvas"></canvas>',
 	logoBig : '<logo class="big" />',
-	mainMenu : '<main><span class="menu-top-item">Project</span></main>',
+	mainMenu : '<main><span class="menu-top-item">Project<span class="menu-sub"><span class="menu-item">New Project</span></span></span></main>',
 };
 
