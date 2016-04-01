@@ -93,6 +93,12 @@ TOWER.ELEMENTS = {
 				'<span class="menu-item">Import</span>'+
 			'</span>'+
 		'</span>'+
+		'<span class="menu-top-item">Windows'+
+			'<span class="menu-sub">'+
+				'<span class="menu-item">Tools</span>'+
+				'<span class="menu-item">Browser</span>'+
+			'</span>'+
+		'</span>'+
 		'<span class="menu-top-item">Help'+
 			'<span class="menu-sub">'+
 				'<span class="menu-item">Documentation</span>'+

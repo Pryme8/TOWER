@@ -95,6 +95,7 @@ tower main .menu-top-item {
 	padding-right: 1em;
 	text-align: center;
 	cursor: pointer;
+	display: inline-block;
 }
 
 tower main .menu-top-item:hover{
