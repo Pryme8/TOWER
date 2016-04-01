@@ -73,6 +73,11 @@ TOWER.ELEMENTS = {
 			'<span class="menu-sub">'+
 				'<span class="menu-item">New Project</span>'+
 				'<span class="menu-item">Open Project</span>'+
+				'<hr/>'+
+				'<span class="menu-item">New Scene</span>'+
+				'<span class="menu-item">Open Scene</span>'+
+				'<span class="menu-item">New Object</span>'+
+				'<span class="menu-item">Open Object</span>'+
 			'</span>'+
 		'</span>'+
 	'</main>',
