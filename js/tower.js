@@ -46,6 +46,7 @@ this._start();
 TOWER.prototype._start = function(){
 	this.DOM.logoBig = $(TOWER.ELEMENTS.logoBig);
 	this.DOM.Master.append(this.DOM.logoBig);
+	this.DOM.logoBig.fadeIn(600, function(){});
 }
 
 TOWER.ELEMENTS = {
