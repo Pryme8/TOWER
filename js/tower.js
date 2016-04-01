@@ -46,30 +46,36 @@ this._start();
 TOWER.prototype._start = function(){
 	this.DOM.logoBig = $(TOWER.ELEMENTS.logoBig);
 	this.DOM.Master.append(this.DOM.logoBig);
-	this.DOM.logoBig.fadeIn(1800, function(){
-	this.DOM.logoBig.animate({
-    left: "40px",
-	top: "40px",
-	width: "64px",
-	height: "64px",
-  }, 3200, function() {
-    // Animation complete.
-  });
-	
+	this.DOM.logoBig.fadeIn(1400, function(){
 	});
 	this.DOM.mainMenu = $(TOWER.ELEMENTS.mainMenu);
 	this.DOM.Master.append(this.DOM.mainMenu);
 	this.DOM.toolBar = $(TOWER.ELEMENTS.toolBar);
 	this.DOM.Master.append(this.DOM.toolBar);
 	
-	
+	this.DOM.logoBig.animate({
+    left: "40px",
+	top: "40px",
+	width: "64px",
+	height: "64px",
+  	}, 3200, function() {
+    // Animation complete.
+  	});
 
 }
 
 TOWER.ELEMENTS = {
 	canvas : '<canvas id="renderCanvas"></canvas>',
 	logoBig : '<logo class="big" />',
-	mainMenu : '<main><span class="menu-top-item">Project<span class="menu-sub"><span class="menu-item">New Project</span></span></span></main>',
+	mainMenu : 
+	'<main>'+
+		'<span class="menu-top-item">Project'+
+			'<span class="menu-sub">'+
+				'<span class="menu-item">New Project</span>'+
+				'<span class="menu-item">Open Project</span>'+
+			'</span>'+
+		'</span>'+
+	'</main>',
 	toolBar : '<tools></tools>',
 };
 
