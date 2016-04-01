@@ -12,6 +12,7 @@ TOWER = function(){
 TOWER.prototype._init = function(){
 	this.DOM.Master = $('tower');
 	this.DOM.canvas = $(TOWER.ELEMENTS.canvas);
+	this.DOM.Master.append(this.DOM.canvas);
 	
 
 }
