@@ -79,6 +79,25 @@ TOWER.ELEMENTS = {
 				'<span class="menu-item">New Object</span>'+
 				'<span class="menu-item">Open Object</span>'+
 			'</span>'+
+			'<span class="menu-top-item">Edit'+
+			'<span class="menu-sub">'+
+				'<span class="menu-item">Project Properties</span>'+
+				'<span class="menu-item">Scene Properties</span>'+
+				'<span class="menu-item">Object Properties</span>'+
+			'</span>'+
+			'<span class="menu-top-item">Assets'+
+			'<span class="menu-sub">'+
+				'<span class="menu-item">Browse</span>'+
+				'<span class="menu-item">Import</span>'+
+			'</span>'+
+			'<span class="menu-top-item">Help'+
+			'<span class="menu-sub">'+
+				'<span class="menu-item">Documentation</span>'+
+				'<span class="menu-item">About</span>'+
+			'</span>'+
+			
+			
+			'<span class="menu-top-item">About</span>'+
 		'</span>'+
 	'</main>',
 	toolBar : '<tools></tools>',
