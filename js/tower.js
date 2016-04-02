@@ -3,12 +3,11 @@ TOWER = function(){
 	this.data = {
 	activeTool : null,
 	lastTool : null,
+	project : null,
 	};
 	this.CORE = {
 		engine : null,
-		scene : null,
-		scenes : [],
-		objects : [],	
+		scene : null
 		};
 	this.DOM = {};
 	this._init();	
@@ -85,6 +84,16 @@ $('icon').bind('mouseout',function(e){
 	$('tower second tooltip').text("");	
 	}
 });
+//MENU
+$('.menu-item').bind('click',function(e){
+	var target = $(e.target);
+	switch(target.attr('act')){
+		case "New-Project":
+			parent.data.project = new TOWER.PROJECT(null,parent);
+		break;
+	}
+});
+
 	
 }
 
@@ -95,7 +104,7 @@ TOWER.ELEMENTS = {
 	'<main>'+
 		'<span class="menu-top-item">Project'+
 			'<span class="menu-sub">'+
-				'<span class="menu-item">New Project</span>'+
+				'<span class="menu-item" act="New-Project">New Project</span>'+
 				'<span class="menu-item">Open Project</span>'+
 				'<hr/>'+
 				'<span class="menu-item">New Scene</span>'+
@@ -158,9 +167,6 @@ TOWER.ELEMENTS = {
 		'</tool>'+
 	'</tools>',
 	
-	popups : {
-		about : "<pane id='about'></pane>"
-	},
 };
 
 TOWER.TOOLS = {};
@@ -180,4 +186,70 @@ TOWER.TOOLS.CREATE = {
 		}
 	}
 };
+
+
+//PROJECT OBJECT
+TOWER.PROJECT = function(location, master){
+	this._master = master;
+	this._location = location || null;
+	if(this._location){
+		//LOAD
+	}else{
+		//NEW
+	this._createNew();
+	}
+}
+
+TOWER.PROJECT.prototype._createNew = function(){
+			this.scenes = [];
+			this.objects = [];
+			var parent = this;
+			this._master._createPane(TOWER.PANES.PROJECT.NEW, {width : '450px', height: '280px'}, {moveto : 'absCenter'}, this);			
+			$('pane#Create-New-Project').bind('click', function(e){
+				parent.name = $('pane#Create-New-Project input#project-name').val();
+				parent.description = $('pane#Create-New-Project input#project-description').val();
+				parent.timestamps = {
+					createdOn : new Date(),
+					lastModified : new Date(),
+				};
+				this.remove();
+				parent._master.data.project = parent;
+				console.log(parent._master);
+			});
+}
+
+
+//POP UP AND PANES
+
+TOWER.prototype._createPane = function(target, css, args, master){
+	var newPane = $(target);
+	$('tower').append(newPane);
+	newPane.css(css);
+	if(args.moveto){
+		switch(args.moveto){
+			case 'absCenter':
+			newPane.css({'left':(($(window).width()*0.5)- (newPane.width()*0.5)),'top':(($('tower').height()*0.5)- (newPane.height()*0.5))})
+			break;	
+		}
+	}
+}
+
+TOWER.PANES = {
+	PROJECT :{
+		NEW :
+		'<pane id="Create-New-Project">'+
+		'Name :<input id="project-name" type="text" value="New Project"/> <BR />'+
+		'Description :<textarea id="project-description" value="A New TOWER3D Project!" cols="40" rows="4" /> <BR />'+
+		'<action act="create-project-go">Create Project</action>'+
+		'</pane>',
+	},
+};
+
+
+/*FILES STUFF*/
+
+
+
+
+
 

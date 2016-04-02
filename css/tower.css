@@ -166,7 +166,7 @@ tower tools{
 	bottom:0;
 	background:#999;
 	overflow:visible;
-	padding-top:3em;
+	padding-top: 2em;
 	text-align: center;
 }
 
@@ -221,5 +221,36 @@ tower tools tool icon.active {
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 
+/*Panes*/
+tower pane {
+display:block;
+position:absolute;
+background:#FFC;
+border:solid 1px black;
+font-size:14px;
+font-weight:normal;
+padding-top:1.2em;
+}
+tower pane::after{
+position:absolute;
+display:block;
+top:0;
+left:0;
+right:0;
+height:1em;
+font-style:italic;
+content:attr(id);
+background:rgba(51,51,51,0.4);
+}
 
+/*Inputs*/
+action {
+	display:inline-block;
+	padding:0.2em 0.5em;
+	background:#E22B46;
+	font-size:0.85em;
+	position:relative;
+	margin:0.2em;
+	cursor:pointer;
+}
 
