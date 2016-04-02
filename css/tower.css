@@ -53,19 +53,12 @@ tower logo.big{
 	display:none;
 }
 
-tower tools{
-	width:80px;
-	position:absolute;
-	left:0;
-	top: 1.5em;
-	bottom:0;
-	background:#999;
-}
 
 tower main{
+	
 	position:absolute;
 	width:100%;
-	
+	z-index:2;
 	height:1.5em;
 	line-height:1.5em;
 	color:#FFF;
@@ -141,3 +134,92 @@ tower main .menu-item{
 	padding-top: 0;
 	padding-bottom: 0;
 }
+tower second{
+	position:absolute;
+	left:0;
+	top:1.5em;
+	height:1em;
+	right:0;
+	background:#D25C69;	
+	z-index:1;
+	padding-left:80px;
+}
+tower tooltip{
+	display:inline-block;
+	position:relative;
+	font-size:0.8;
+	line-height:1em;
+	color:#fff;
+	font-weight:bolder;
+	font-style:italic;
+	text-align:left;
+	margin-right:1em;
+}
+
+
+/*TOOL BAR*/
+tower tools{
+	width:80px;
+	position:absolute;
+	left:0;
+	top: 2.5em;
+	bottom:0;
+	background:#999;
+	overflow:visible;
+	padding-top:3em;
+	text-align: center;
+}
+
+tower tools tool{
+	display:block;
+	position:relative;
+	white-space: nowrap;
+	
+}
+
+.material-icons{
+display:none;
+}
+
+tower tools tool icon {
+	display:none;
+	cursor:pointer;
+	width:48px;
+	height:48px;
+	margin-right:0em;
+	border:1px solid black;
+	background:white;
+	position:relative;
+}
+
+tower tools tool:hover{
+width:auto;
+}
+
+tower tools tool:hover icon {
+	display:inline-block;
+}
+
+tower tools tool icon.active {
+	display:inline-block;
+}
+
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+
+

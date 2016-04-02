@@ -1,5 +1,9 @@
 // TOWER 3D - Author: Andrew V Butt Sr. Pryme8@gmail.com 2016
 TOWER = function(){
+	this.data = {
+	activeTool : null,
+	lastTool : null,
+	};
 	this.CORE = {
 		engine : null,
 		scene : null,
@@ -29,10 +33,10 @@ var createScene = function() {
     return scene;
 }
 
-var scene = createScene();
+parent.CORE.scene = createScene();
 
 parent.CORE.engine.runRenderLoop(function() {
-    scene.render();
+    parent.CORE.scene.render();
 });
 
 $(window).bind('resize', function() {
@@ -44,14 +48,19 @@ this._start();
 }
 
 TOWER.prototype._start = function(){
+	var parent = this;
 	this.DOM.logoBig = $(TOWER.ELEMENTS.logoBig);
 	this.DOM.Master.append(this.DOM.logoBig);
 	this.DOM.logoBig.fadeIn(1400, function(){
 	});
 	this.DOM.mainMenu = $(TOWER.ELEMENTS.mainMenu);
 	this.DOM.Master.append(this.DOM.mainMenu);
+	this.DOM.secondBar = $(TOWER.ELEMENTS.secondBar);
+	this.DOM.Master.append(this.DOM.secondBar);
 	this.DOM.toolBar = $(TOWER.ELEMENTS.toolBar);
 	this.DOM.Master.append(this.DOM.toolBar);
+	
+	
 	
 	this.DOM.logoBig.animate({
     left: "40px",
@@ -61,7 +70,22 @@ TOWER.prototype._start = function(){
   	}, 3200, function() {
     // Animation complete.
   	});
+	parent._bindings();
+}
 
+TOWER.prototype._bindings = function(){
+var parent = this;
+$('icon').bind('mouseover',function(e){
+	$('tower second tooltip').text($(e.target).attr('id'));
+});
+$('icon').bind('mouseout',function(e){
+	if(parent.data.activeTool){
+	$('tower second tooltip').text(parent.data.activeTool);
+	}else{
+	$('tower second tooltip').text("");	
+	}
+});
+	
 }
 
 TOWER.ELEMENTS = {
@@ -112,6 +136,48 @@ TOWER.ELEMENTS = {
 		'<option>Painter</option>'+
 		'</select>'+
 	'</main>',
-	toolBar : '<tools></tools>',
+	secondBar : 
+		'<second>'+
+		'<tooltip></tooltip>'+
+		'</second>',
+	toolBar :
+	'<tools>'+
+		'<tool class="type">'+
+			'<icon class="material-icons md-48 active" id="select">near_me</icon>'+
+			'<icon class="material-icons md-48" id="move">open_with</icon>'+
+			'<icon class="material-icons md-48" id="scale">search</icon>'+
+			'<icon class="material-icons md-48" id="rotate">replay</icon>'+
+		'</tool>'+
+		'<tool class="type">'+
+			'<icon class="material-icons md-48 active" id="create-primitive">control_point</icon>'+
+			'<icon class="material-icons md-48" id="create-platonic">control_point_duplicate</icon>'+
+		'</tool>'+
+		'<tool class="type">'+
+			'<icon class="material-icons md-48 active" id="create-light">lightbulb_outline</icon>'+
+			'<icon class="material-icons md-48" id="create-camera">photo_camera</icon>'+
+		'</tool>'+
+	'</tools>',
+	
+	popups : {
+		about : "<pane id='about'></pane>"
+	},
+};
+
+TOWER.TOOLS = {};
+TOWER.TOOLS.CREATE = {
+	Platonic :{
+		
+	},
+	Primitive :{
+		Cube : {
+			_create : function(args, scene){
+				this.name = args.name || 'Cube';
+				this.width = args.width || 10;
+				this.height = args.height || 10;
+				this.depth = args.height || 10;
+				return BABYLON.MeshBuilder.CreateBox(this.name, {width: this.width, height: this.height, depth:this.depth}, scene);						
+			}
+		}
+	}
 };
 
