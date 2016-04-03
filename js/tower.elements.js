@@ -80,7 +80,7 @@ TOWER.ELEMENTS = {
 						'<span class="menu-item"><toggle set="camera">Back/Left</toggle></span>'+
 					'</span>'+
 					'</span>'+
-					'<span class="menu-item"><toggle set="views">4 Split</toggle></span>'+
+					'<span class="menu-item"><toggle set="camera">4 Split</toggle></span>'+
 			'</span>'+
 			'</span>'+
 			
