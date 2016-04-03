@@ -203,7 +203,8 @@ TOWER.prototype._toolClick =  function(target){
 				newItem.domObj.find('#id').text(newObject.id);
 				parent.DOM.browser.find('#Object-List item').removeClass('selected');		
 				newItem.domObj.addClass('selected');
-				newItem.obj.showBoundingBox = true; 
+				newItem.obj.showBoundingBox = true;
+				parent._updateSelectedObject();
 				});
 			break;
 		}
