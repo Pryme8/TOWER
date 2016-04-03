@@ -18,6 +18,9 @@ TOWER.OBJECT.prototype._init = function(){
 	console.log("Object Created");
 	this.data = $.extend(true,{},this.type);
 	this.data.widgets.axis.lines = new TOWER.WIDGETS.localAxis(this._master.CORE.scene, this);
+	this.data.widgets.position.lines = new TOWER.WIDGETS.position(this._master.CORE.scene, this);
+	this.data.widgets.rotation.lines = new TOWER.WIDGETS.rotation(this._master.CORE.scene, this);
+	this.data.widgets.scale.lines = new TOWER.WIDGETS.scale(this._master.CORE.scene, this);
 }
 
 

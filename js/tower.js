@@ -96,9 +96,8 @@ TOWER.prototype._bindings = function(){
 								});	
 							}
 							if(target.attr('id')=='selected-bounding-box'){
-							var toggleCheck = target.is('.active');
-							
-							parent.data.selectedObject.obj.showBoundingBox = toggleCheck;
+							var toggleCheck = target.is('.active');							
+							parent.data.selectedObject.data.bObject.showBoundingBox = toggleCheck;
 							}
 					}else{
 						$('[set="'+target.attr('set')+'"]').removeClass('active');
@@ -126,7 +125,7 @@ TOWER.prototype._bindings = function(){
 	
 	$('icon').bind('click',function(e){
 		if(parent.data.project){
-		parent._toolClick($(e.target));	
+		TOWER.TOOLS.setCurrentTool($(e.target), parent);
 		}
 	});
 	
@@ -176,60 +175,6 @@ TOWER.prototype._bindings = function(){
 	
 }//End Bindings
 
-/*TOOL CLICKS*/
-TOWER.prototype._toolClick =  function(target){
-	var parent = this;
-	if(target.attr('type')=="transform"){
-		this.data.lastTool = this.data.activeTool;	
-		this.data.activeTool = target.attr('id');		
-	}
-	if(target.attr('type')=="create"){
-		switch(target.attr('id')){
-			case 'create-primitive':
-				this._createPane(TOWER.PANES.CREATE.PRIMITIVE, {width : '300px', height: '120px'}, {moveto : 'absCenter'}, this);
-				$('pane#Create-Primitive-Solid action[act="create-primitive-accept"]').bind('click', function(e){
-					var pane = $('pane#Create-Primitive-Solid');
-					parent.data.project.objects.push(new TOWER.OBJECT(pane.find('#primitive-name').val(), TOWER.OBJECT.TYPES.STANDARD, parent))	;
-					var newObject = parent.data.project.objects[parent.data.project.objects.length-1];
-						newObject.id = parent.data.project.objects.length-1;
-						newObject.bObject = TOWER.TOOLS.CREATE.Primitive[pane.find('#primitive-type').val()]._create({},parent.CORE.scene);
-						pane.remove();
-						var parentItem = parent.DOM.browser.find('#Object-List').find('item.selected');
-						var newItem = parent._createNewItem();
-						if(parentItem.attr('type')=="scene"){
-		 					parent.data.project.activeScene.objects.push(newObject);
-							newItem.domObj = $(newItem.domObj);
-							parentItem.append(newItem.domObj);	
-						}
-				if(parent.data.selectedObject.type == "Object"){
-						parent.data.selectedObject.obj.renderingGroupId = 1;
-				}
-						
-				parent.data.selectedObject.type = "Object";
-				parent.data.selectedObject.name = newObject.name;
-				parent.data.selectedObject.obj = newObject.bObject;
-				parent.data.selectedObject.obj.renderingGroupId = 2;
-				newItem.obj = newObject.bObject;
-				newItem.domObj.attr('name', newObject.name);
-				newItem.domObj.attr('id',  newObject.id);
-				newItem.domObj.attr('type',  newObject.typeName);
-				newItem.domObj.find('#name').text( newObject.name);
-				newItem.domObj.find('#type').addClass(newObject.typeName);
-				newItem.domObj.find('#id').text(newObject.id);
-				parent.DOM.browser.find('#Object-List item').removeClass('selected');		
-				newItem.domObj.addClass('selected');
-				
-				if($('toggle#selected-bounding-box').is('.active')){
-				newItem.obj.showBoundingBox = true;
-				}
-				
-				parent._updateSelectedObject();
-				});
-			break;
-		}
-		
-	}
-};
 
 //Select Object in Object list, or In Browser, on while in select mode, or by dropdown
 TOWER.prototype._selectObject = function(target){
@@ -335,6 +280,7 @@ TOWER.PROJECT.prototype._createNew = function(){
 				parent._master.data.selectedObject.name = "New Scene";
 				parent._master.data.selectedObject.domObj = tempItem;
 				parent._master.data.selectedObject.obj = parent.scenes[0];
+				if(!parent._master.data.activeTool){parent._master.data.activeTool = "select";};
 				tempItem.attr('name','New Scene');
 				tempItem.attr('id', 0);
 				tempItem.attr('type', 'scene')
@@ -344,6 +290,7 @@ TOWER.PROJECT.prototype._createNew = function(){
 				tempItem.addClass('selected');		
 				
 				parent._master._buildEditor();
+				
 			});
 }
 
@@ -381,7 +328,7 @@ TOWER.ITEM = {
 	name : null,
 	type : null,
 	id : null,
-	domObj : "<item name='' type='' id=''><span id='type'></span> - <span id='name'></span>:<span id='id'></span></item>",
+	domObj : "<item name='' type='' id=''><span id='type' class='ico'></span> - <span id='name'></span>:<span id='id'></span></item>",
 	obj : null
 };
 

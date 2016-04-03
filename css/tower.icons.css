@@ -58,7 +58,7 @@ background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(241,241,241,1
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
 }
 
-icon::after{
+icon::after, .ico::after{
 	z-index:0;
 	position:absolute;
 	display:block;
@@ -97,4 +97,19 @@ icon#create-light::after{
 icon#create-camera::after{
 	background-image:url(../imgs/icons/camera.png);
 }
+
+
+
+.ico{
+	background-size: 1em 1em;
+background-position: center;
+
+}
+.ico.scene{
+	background-image:url(../imgs/icons/scene.png);	
+}
+.ico.object{
+	background-image:url(../imgs/icons/create-primitive.png);	
+}
+
 
