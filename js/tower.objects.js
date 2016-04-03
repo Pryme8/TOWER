@@ -1,6 +1,6 @@
 // OBJECTS
 TOWER.OBJECT = function(name, type, master){
-	if(!name || !type || !master){return};
+	console.log("Object Called");
 	this.name = name;
 	this.id = null;
 	this.type = type;
@@ -15,7 +15,9 @@ TOWER.OBJECT = function(name, type, master){
 }
 
 TOWER.OBJECT.prototype._init = function(){
+	console.log("Object Created");
 	this.data = $.extend(true,{},this.type);
+	this.data.widgets.axis.lines = new TOWER.WIDGETS.localAxis(this._master.CORE.scene, this);
 }
 
 
@@ -39,5 +41,23 @@ TOWER.OBJECT.TYPES = {
 				move : false
 			},
 		},
+		widgets :{
+			axis : {
+				lines : null,
+				display : true,
+			},
+			position : {
+				lines : null,
+				display : true,
+			},
+			rotation : {
+				lines : null,
+				display : true,
+			},
+			scale : {
+				lines : null,
+				display : true,
+			}
+		}
 	},
 };

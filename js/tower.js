@@ -31,7 +31,7 @@ var createScene = function() {
     var scene = new BABYLON.Scene(parent.CORE.engine);
     var camera = new BABYLON.FreeCamera('3d_Camera', new BABYLON.Vector3(0, 20, 3), scene);
 	camera.maxZ = 100000;
-	camera.minZ = 0.000001;
+	camera.minZ = 0.001;
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvas, false);
 	scene.activeCamera = camera;
@@ -84,11 +84,22 @@ TOWER.prototype._start = function(){
 TOWER.prototype._bindings = function(){
 	var parent = this;
 		$('tower').bind('click', function(e){
-			console.log(e.target);
+			//console.log(e.target);
 			var target = $(e.target);
 				if(target.is('toggle')){
 					if(!target.attr('set')){
-						target.toggleClass('active');	
+						target.toggleClass('active');
+							if(target.attr('id')=='default-light-toggle'){
+								var toggleCheck = target.is('.active');
+								$.each(parent.CORE.defaultLights, function(i, e){
+									e.setEnabled(toggleCheck); 	
+								});	
+							}
+							if(target.attr('id')=='selected-bounding-box'){
+							var toggleCheck = target.is('.active');
+							
+							parent.data.selectedObject.obj.showBoundingBox = toggleCheck;
+							}
 					}else{
 						$('[set="'+target.attr('set')+'"]').removeClass('active');
 						target.addClass('active');
@@ -190,10 +201,14 @@ TOWER.prototype._toolClick =  function(target){
 							newItem.domObj = $(newItem.domObj);
 							parentItem.append(newItem.domObj);	
 						}
+				if(parent.data.selectedObject.type == "Object"){
+						parent.data.selectedObject.obj.renderingGroupId = 1;
+				}
 						
 				parent.data.selectedObject.type = "Object";
 				parent.data.selectedObject.name = newObject.name;
 				parent.data.selectedObject.obj = newObject.bObject;
+				parent.data.selectedObject.obj.renderingGroupId = 2;
 				newItem.obj = newObject.bObject;
 				newItem.domObj.attr('name', newObject.name);
 				newItem.domObj.attr('id',  newObject.id);
@@ -203,7 +218,11 @@ TOWER.prototype._toolClick =  function(target){
 				newItem.domObj.find('#id').text(newObject.id);
 				parent.DOM.browser.find('#Object-List item').removeClass('selected');		
 				newItem.domObj.addClass('selected');
+				
+				if($('toggle#selected-bounding-box').is('.active')){
 				newItem.obj.showBoundingBox = true;
+				}
+				
 				parent._updateSelectedObject();
 				});
 			break;
@@ -232,13 +251,7 @@ TOWER.prototype._buildEditor = function(){
 	this._updateCurrentObjectSelect();
 	this._updateSelectedObject();
 	var parent = this;
-	$('#default-light-toggle').bind('click', function(/*no need to pass event*/){
-		$(this).toggleClass('active');
-		var toggleCheck = $(this).is('.active');
-			$.each(parent.CORE.defaultLights, function(i, e){
-				e.setEnabled(toggleCheck); 	
-			});			
-	});
+	
 };
 
 TOWER.prototype._buildAllWidgets = function(){

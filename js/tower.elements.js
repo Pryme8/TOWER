@@ -88,13 +88,16 @@ TOWER.ELEMENTS = {
 			'<span class="menu-sub">'+
 					'<span class="menu-item hasSub" id="widgets" >Widgets'+
 					'<span class="menu-sub">'+
-						'<span class="menu-item"><toggle class="active" id="default-light-toggle">default light</toggle></span>'+
 						'<span class="menu-item"><toggle class="active" id="horizon-toggle">horizon</toggle></span>'+
 						'<span class="menu-item"><toggle class="active" id="grid-toggle">grid</toggle></span>'+
 						'<span class="menu-item"><toggle class="active" id="world-axis-toggle">world-axis</toggle></span>'+
-
+						'<span class="menu-item"><toggle class="active" id="local-axis-toggle">local-axis</toggle></span>'+
 					'</span>'+
 					'</span>'+
+					
+					'<span class="menu-item"><toggle class="active" id="default-light-toggle">default light</toggle></span>'+
+					'<span class="menu-item"><toggle class="active" id="selected-bounding-box">selected box</toggle></span>'+
+					
 			'</span>'+
 			'</span>'+
 			
@@ -103,18 +106,18 @@ TOWER.ELEMENTS = {
 	toolBar :
 	'<tools>'+
 		'<tool class="type">'+
-			'<icon class="material-icons md-48 active" id="select" type="transform" >near_me</icon>'+
-			'<icon class="material-icons md-48" id="move" type="transform" >open_with</icon>'+
-			'<icon class="material-icons md-48" id="scale" type="transform">search</icon>'+
-			'<icon class="material-icons md-48" id="rotate" type="transform" >replay</icon>'+
+			'<icon class="active" id="select" type="transform" ></icon>'+
+			'<icon id="move" type="transform" ></icon>'+
+			'<icon id="scale" type="transform"></icon>'+
+			'<icon id="rotate" type="transform" ></icon>'+
 		'</tool>'+
 		'<tool class="type">'+
-			'<icon class="material-icons md-48 active" id="create-primitive" type="create">control_point</icon>'+
-			'<icon class="material-icons md-48" id="create-platonic" type="create">control_point_duplicate</icon>'+
+			'<icon class="active" id="create-primitive" type="create"></icon>'+
+			'<icon id="create-platonic" type="create"></icon>'+
 		'</tool>'+
 		'<tool class="type">'+
-			'<icon class="material-icons md-48 active" id="create-light" type="create">lightbulb_outline</icon>'+
-			'<icon class="material-icons md-48" id="create-camera" type="create">photo_camera</icon>'+
+			'<icon class="active" id="create-light" type="create"></icon>'+
+			'<icon id="create-camera" type="create"></icon>'+
 		'</tool>'+
 	'</tools>',
 	browser : 

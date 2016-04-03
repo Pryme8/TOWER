@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* Icons */
+
+tower tools tool icon {
+	display:none;
+	cursor:pointer;
+	width:48px;
+	height:48px;
+	margin-right:0em;
+	border:1px solid black;
+	position:relative;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	overflow:hidden;
+}
+
+tower tools tool icon::before{
+	z-index:0;
+	position:absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	content:'';
+	left:0;
+	top:0;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0f3fa+0,d8f0fc+50,b8e2f6+51,b6dffd+100;Shape+2+Style */
+background: rgb(224,243,250); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(224,243,250,1) 0%, rgba(216,240,252,1) 50%, rgba(184,226,246,1) 51%, rgba(182,223,253,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(224,243,250,1) 0%,rgba(216,240,252,1) 50%,rgba(184,226,246,1) 51%,rgba(182,223,253,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(224,243,250,1) 0%,rgba(216,240,252,1) 50%,rgba(184,226,246,1) 51%,rgba(182,223,253,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0f3fa', endColorstr='#b6dffd',GradientType=0 ); /* IE6-9 */	
+}
+
+tower tools tool:hover{
+width:auto;
+}
+
+tower tools tool:hover icon {
+	display:inline-block;
+}
+
+tower tools tool icon.active {
+	display:inline-block;
+}
+
+icon{
+	background-size:100% 100%;
+	background-position:center center;
+	
+}
+
+icon:hover:before{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+}
+
+icon::after{
+	z-index:0;
+	position:absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	content:'';
+	left:0;
+	top:0;
+}
+
+icon#create-primitive::after{
+	background-image:url(../imgs/icons/create-primitive.png);
+}
+
+icon#create-platonic::after{
+	background-image:url(../imgs/icons/create-platonic.png);
+}
+
+icon#select::after{
+	background-image:url(../imgs/icons/select.png);
+}
+
+icon#move::after{
+	background-image:url(../imgs/icons/move.png);
+}
+
+icon#scale::after{
+	background-image:url(../imgs/icons/scale.png);
+}
+icon#rotate::after{
+	background-image:url(../imgs/icons/rotate.png);
+}
+icon#create-light::after{
+	background-image:url(../imgs/icons/create-light.png);
+}
+icon#create-camera::after{
+	background-image:url(../imgs/icons/camera.png);
+}
+

@@ -17,6 +17,7 @@ TOWER.WIDGETS = {
 			this.lines.alpha = 0.6;
 			
 			this.visible = true;
+			this.lines.renderingGroupId = 0; 
 			
 			var parent = this;
 			scene.registerBeforeRender(function(){
@@ -51,6 +52,7 @@ TOWER.WIDGETS = {
 			this.grid.material.opacity = 0.6;
 			
 			this.visible = true;
+			this.grid.renderingGroupId = 0; 
 			
 			var parent = this;
 			scene.registerBeforeRender(function(){
@@ -81,6 +83,9 @@ TOWER.WIDGETS = {
 			this.poles.X.color = new BABYLON.Color3(1,0,0);
 			this.poles.Y.color = new BABYLON.Color3(0,1,0);
 			this.poles.Z.color = new BABYLON.Color3(0,0,1);
+			this.poles.X.renderingGroupId = 3; 
+			this.poles.Y.renderingGroupId = 3; 
+			this.poles.Z.renderingGroupId = 3;
 			
 			this.visible = true;
 			
@@ -105,5 +110,51 @@ TOWER.WIDGETS = {
 				}
 				
 			});
-		}
-}
+		},
+		localAxis : function(scene, master){
+			console.log("local-axis Widget Built");
+			this._master = master;
+			this.id = "local-axis";
+			var position = this._master.data.origins.position;
+			this.poles = {
+				X : BABYLON.Mesh.CreateLines("X-Pole", [new BABYLON.Vector3(position.x,position.y,position.z),new BABYLON.Vector3(position.x+5,position.y,position.z)], scene),
+				Y : BABYLON.Mesh.CreateLines("Y-Pole", [new BABYLON.Vector3(position.x,position.y,position.z),new BABYLON.Vector3(position.x,position.y+5,position.z)], scene),
+				Z : BABYLON.Mesh.CreateLines("Z-Pole", [new BABYLON.Vector3(position.x,position.y,position.z),new BABYLON.Vector3(position.x,position.y,position.z+5)], scene)
+			}
+			this.poles.parent = new BABYLON.Mesh('localAxis',scene);//Make a blank container.
+			this.poles.parent.position = this._master.data.origins.position;
+			this.poles.parent.rotation = this._master.data.origins.rotation;
+			this.poles.X.parent = this.poles.parent;
+			this.poles.Y.parent = this.poles.parent;
+			this.poles.Z.parent = this.poles.parent;
+			this.poles.X.color = new BABYLON.Color3(1,0,0);
+			this.poles.Y.color = new BABYLON.Color3(0,1,0);
+			this.poles.Z.color = new BABYLON.Color3(0,0,1);
+			this.poles.X.renderingGroupId = 3; 
+			this.poles.Y.renderingGroupId = 3; 
+			this.poles.Z.renderingGroupId = 3; 
+			this.visible = true;
+			var parent = this;
+			/*scene.registerBeforeRender(function(){
+				if($('tower second toggle#local-axis-toggle').is('.active')){
+						if(!parent.visible){	
+							parent.poles.X.visibility = true;
+							parent.poles.Y.visibility = true;
+							parent.poles.Z.visibility = true;
+						}
+						parent.visible = true;
+						parent.position = parent._master.bObject.position;				
+				}else{
+					if(parent.visible){	
+							parent.poles.X.visibility = false;
+							parent.poles.Y.visibility = false;
+							parent.poles.Z.visibility = false;
+						}
+					parent.visible = false;
+				}
+				
+			});*/
+			
+		
+		},		
+};
