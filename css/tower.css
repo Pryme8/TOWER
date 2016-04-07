@@ -6,7 +6,7 @@ html, body{
 	overflow:hidden;
 	background:#E0D6FE;
 	border:0;
-	padding:0;	
+	padding:0;
 }
 
 tower, tower *, *::before, *::after{
@@ -14,10 +14,13 @@ tower, tower *, *::before, *::after{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display:block;
+  font-family:"Lucida Console", Monaco, monospace;
 }
 
 tower{
 	font-size:18px;
+	color: #fff;
+	text-shadow:0px 1px #000,	1px 0px #000,	0px -1px #000,	-1px 0px #000,	1px 1px #000,	-1px 1px #000,	1px -1px #000,	-1px -1px #000;
 	position:absolute;
 	left:0;right:0;top:0;bottom:0;
 	padding:0;margin:0;
@@ -28,417 +31,335 @@ background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,25
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
 }
 
+tower .gridBg{
+	font-size:18px;
+	position:absolute;
+	left:0;right:0;top:0;bottom:0;
+	padding:0;margin:0;
+	display:block;
+	content:'';
+	background: url(../imgs/bg1.svg);
+	background-size:100% 100%;
+	z-index: 10000;
+	opacity:0.2;
+}
+
 tower #renderCanvas{
 	position:absolute;
-	top:2.5em;
-	height:calc(100% - 2.5em);
-	width:calc(100% - 340px);
-	left:80px;
-	
+	top:0;
+	height:100%;
+	width:100%;
+	left:0;	
 }
 
 tower logo{
 	position:absolute;
-	background-image:url(../imgs/icon_logo.png);
-	background-position:center center;
-	background-size:100% 100%;
+	background-image:url(../imgs/tower_logo.svg);
+	background-size:100% auto;
 	z-index: 10001;
 }
 
 tower logo.big{
-	width:15vw;
-	height:15vw;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	display:block;
+}
+
+
+page{
+	display:block;
 	top:50%;
 	left:50%;
-	transform:translate(-50%,-50%);	
-	display:none;
-}
-
-/*Browser Window*/
-browser{
-	display:block;
+	transform:translate(-50%,-50%);
 	position:absolute;
-	top:2.5em;
-	right:0;
-	width:260px;
-	bottom:0px;
-	background:#999;
+	z-index:20001;
+	font-size:0.85em;
+	padding:0.5em;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#959595+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,1b1b1b+100;Black+Gloss+Pipe */
+background: rgb(149,149,149); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(149,149,149,1) 0%, rgba(13,13,13,1) 46%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 53%, rgba(78,78,78,1) 76%, rgba(56,56,56,1) 87%, rgba(27,27,27,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(149,149,149,1) 0%,rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(149,149,149,1) 0%,rgba(13,13,13,1) 46%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 53%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=0 ); /* IE6-9 */
+-webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.35);;
+box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.35);
 }
 
-browser tab{
+page::before{
+display:block;
+position:absolute;
+z-index:0;
+left:2px;
+top:1px;
+right:2px;
+bottom:1px;
+content:'';
+-webkit-border-radius: 1px;
+	border-radius: 1px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#606c88+0,3f4c6b+100;Grey+3D+%232 */
+background: rgb(96,108,136); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */	
+}
+
+page#home{
+	width:620px;
+	height:320px;	
+}
+
+pane{
+	display:inline-block;
+	position:relative;
+	width:auto;
+	height:auto;
+	margin:0;
+	padding:0;
+	
+}
+
+pane.fullheight{
+	height:calc(100% - 1em);
+}
+pane.halfwidth{
+	width:50%;	
+}
+
+pane.left{
+	float:left;	
+}
+pane.right{
+	float:right;	
+}
+
+pane.abs{
+	position:absolute;	
+}
+
+pane.scroll-y{
+		overflow-y:auto;
+		overflow-x:hidden;
+}
+pane.scroll-x{
+		overflow-y:hidden;
+		overflow-x:auto;
+}
+pane.scroll-both{
+		overflow-y:auto;
+		overflow-x:auto;
+}
+
+pane.half-width-fix{
+	width:calc(50% - 0.5em);
+}
+
+tab{
 	display:block;
 	position:relative;
 	width:100%;
 	height:auto;
-	min-height:1em;
-	background:#333;
-	color:#fff;	
-	font-size:0.8em;
-	padding-top:1em;
-	padding-left:1px;
-	padding-right:1px;	
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	overflow:visible;
+	margin-top:1.5em;
+	margin-bottom: 1.7em;
+		
 }
 
-browser tab::before{
+tab > span{
 	display:block;
-	position: absolute;
-	content:attr(id);
-	font-size: 0.8em;
+	position:relative;
+	width:100%;
+	height:1.5em;
+	line-height:1.5em;
+	padding-left:0.8em;
+	background-color:#D03D61;
+	font-weight:bold;
+	font-variant:small-caps;
+	top:-1.5em;
+	margin-bottom: -1.5em;
 	left:0;
-	right:0;
-	top:0;
-	height:1.2em;
-	z-index:1;
-	cursor:pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;	
+  cursor:pointer;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+ 	border-top-left-radius: 3px;
+  	border-top-right-radius: 3px;
+	overflow:hidden;
 	
 }
 
-browser tab::after{
+tab::after{
 	display:block;
-	position: absolute;
-	pointer-events: none;
-	font-size: 0.8em;
+	position:absolute;
+	width:auto;
+	height:1.5em;
+	line-height:1.5em;
+	padding-right:1em;
 	font-weight:bolder;
 	content:'◄';
+	top:-1.5em;
 	right:0;
-	top:0;
-	height:1em;
-	width:1em;
-	z-index:1;
-	cursor:pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;	
+  cursor:pointer;
+  pointer-events:none;
 }
 
-browser tab:hover:before{
-	background:#666;
-	
+tab.open::after{
+	content:'▼';
 }
 
-browser tab.open::after{
+tab:hover:after{
 	content:'▼';
 }
 
 
 
-
-browser tab content{
-	display:block;
-	background:#CCC;
-	color:#000;
-	font-size:0.8em;
-	
-}
-
-browser tab content item{
-	display:block;
-	position:relative;
-	width:100%;
-}
-
-browser tab content item.selected{
-background-color: #fff;
-border: 1px solid black;
-}
-
-browser tab content item span{
-	display:inline-block;
-
-}
-
-browser tab content item item{
-	width:95%;
-	margin-left: 5%;
-}
-browser tab content item item::before{
-display: block;
-position: absolute;
-width: 0.6em;
-height: 1em;
-content: '';
-border-bottom: 1px solid black;
-border-left: 1px solid black;
-left: 0;
-top: -0.35em;
-transform: translate(-0.5em, 2px);
-}
-
-browser tab content item span#type{
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	vertical-align: middle;
-	margin-left: 0.2em;
-	margin-top: -1px;
-	padding: 0;
-}
-
-content span{
-	display: inline-block;	
-}
-
-
-/*Main Menu*/
-tower main{
-	
-	position:absolute;
-	width:100%;
-	z-index:1000;
-	height:1.5em;
-	line-height:1.5em;
-	color:#FFF;
-	text-shadow:
-	0px 1px #000,
-	1px 0px #000,
-	0px -1px #000,
-	-1px 0px #000,
-	1px 1px #000,
-	-1px 1px #000,
-	1px -1px #000,
-	-1px -1px #000;
-	font-family:"Courier New", Courier, monospace;
-	font-weight:bold;	
-	background-color:#831338;
-	top:0;
-	left:0;
-	padding-left:80px;	
-}
-tower main select{
-	float:right;	
-}
-
-tower main .menu-top-item {
-	position: relative;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
-	width: 120px;
-	padding-left: 1em;
-	padding-right: 1em;
-	text-align: center;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 0.8em;
-}
-
-tower main .menu-top-item:hover{
-	color: #999;
-}
-tower main .menu-top-item:hover > .menu-sub{
-	display: block;
-}
-
-tower main .menu-top-item  > .menu-sub{
-	display: none;
-	text-align: left;
-	font-size: 0.8em;
-	white-space: nowrap;
-	border-bottom: 1px solid black;
-	background:#AA2759;
-	position: absolute;
-	width: 100%;
-	left:0;
-	padding: 0;
-}
-
-tower main .menu-top-item .menu-sub .menu-item:hover{
-	color:white;
-}
-
-tower main .menu-top-item .menu-sub .menu-item:hover > .menu-sub{
-	display: block;
-}
-
-tower main .menu-top-item .menu-sub:hover{
-	display: block;
-	color:#999;
-}
-
-tower main .menu-item{
-	position: relative;
-	width: 100%;
-	padding: 1em;
-	padding-top: 0;
-	padding-bottom: 0;
-}
-tower second{
-	position:absolute;
-	left:0;
-	top:1.5em;
-	height:1em;
-	right:0;
-	background:#D25C69;	
-	z-index:999;
-	padding-left:80px;
-}
-tower tooltip{
-	display:inline-block;
-	position:relative;
-	font-size:0.8;
-	line-height:1em;
-	color:#fff;
-	font-weight:bolder;
-	font-style:italic;
-	text-align:left;
-	margin-right:1em;
-}
-
-tower second views{
-display:inline-block;
-float:right;
-width:300px;
-height:1em;
-overflow:visible;
-font-size: 0.7em;	
-
-}
-
-tower second views > .menu-top-item{
-	float:left;
-	display:inline-block;	
-	cursor:pointer;
-	font-variant:small-caps;
-	color:#CCC;
-	font-weight:bold;
-	margin:0 0.5em;
-	padding:0 0.2em;
-}
-
-tower second views > .menu-top-item .menu-sub{
+tab > div{
 	display:none;
-	position:absolute;
-	top:1em;
-	min-width:120px;
-}
-
-tower second views > .menu-top-item:hover > .menu-sub{
-	display:block;
-	background:#666;
-	
-}
-
-tower second views > .menu-top-item .menu-item{
-  position:relative;
 	width:100%;
-	background:#666;
-	color: #ccc;
-	padding: 0.1em 0.4em;
-	padding-left: 1.5em;
-	text-align: right;
+	height:auto;
+	border:1px solid #D03D61;
+	padding-top: 0.2em;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#606c88+0,3f4c6b+100;Grey+3D+%232 */
+background: rgb(96,108,136); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */	
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+ 	border-top-bottom-radius: 3px;
+  	border-top-bottom-radius: 3px;
+		
+}
+tab.open > div{
+	display:block;
+	margin-bottom:0.2em;
+	max-height:100%;
+
 }
 
-tower second views > .menu-top-item .menu-item:hover{
-	background:#999;
-	color: #fff;
-
+commit{
+	display:block;
+	width:100%;
+	height: auto;
+	position: relative;
 }
-
-tower second views > .menu-top-item .menu-item:hover > .menu-sub{
-display:block;
-	position:absolute;
+commit #author-block{
+	position: absolute;
+	width:6em;
+	height: 100%;
+}
+commit #author-name{
+position:absolute;
+	z-index: 2;
+	left:50%;
+	top:6.2em;
+	transform: translate(-50%,0);
+	
+}
+commit #author-picture, commit #author-picture img{
+position: absolute;
+	width: 100%;
+	height: 6em;
 	top:0;
-  right:100%;
-}
-
-hr{
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-.hasSub::after{
-	display:block;
-	position: absolute;
-	pointer-events: none;
-	content: '◄';
-	font-size: 0.65em;
-	top:50%;
-	left:0.5em;
-	transform: translate(0,-50%);
-}
-
-toggle::before{
-	display:block;
-	position: absolute;
-	pointer-events: none;
-	content: '';
-	font-size: 0.65em;
-	height:1em;
-	width:1em;
-	border:1px solid black;
-	top:50%;
-	left:0.5em;
-	transform: translate(0,-50%);
-	border-radius: 1em;
-	-webkit-border-radius: 1em;
-}
-
-toggle.active::before{
-	display:block;
-	position: absolute;
-	pointer-events: none;
-	content: '';
-	font-size: 0.65em;
-	height:1em;
-	width:1em;
-	border:1px solid black;
-	top:50%;
-	left:0.5em;
-	transform: translate(0,-50%);
-	border-radius: 1em;
-	-webkit-border-radius: 1em;
-	background:#900;
-	
-}
-
-
-
-/*TOOL BAR*/
-tower tools{
-	width:80px;
-	position:absolute;
 	left:0;
-	top: 2.5em;
-	bottom:0;
-	background:#999;
-	overflow:visible;
-	padding-top: 2em;
-	text-align: center;
+}
+commit #detail-block{
+	position: relative;
+	margin-left: 6.5em;
+	min-height: 8.5em;
+}
+commit #detail-title{
+	position: relative;
+}
+commit #detail-body{
+	position: relative;
 }
 
-tower tools tool{
-	display:block;
-	position:relative;
-	white-space: nowrap;
+action{
+	display: inline-block;
+	font-size: 0.6em;
+	padding: 0.35em 0.5em;
+	line-height: 1em;
+	background-color: #DA7527;
+	position: relative;
+	margin: 0.2em;
+	cursor: pointer;
+}
+
+action:hover{
+	background-color: #E56A17;
+	color:#EEE;
+}
+
+
+action::after{
+	position: relative;
+	content: attr(name);
+	text-shadow: none;
+	font-weight: bold;
 	
 }
 
-/*Panes*/
-tower pane {
-display:block;
-position:absolute;
-background:#FFC;
-border:solid 1px black;
-font-size:14px;
-font-weight:normal;
-padding-top:1.2em;
-}
-tower pane::after{
-position:absolute;
-display:block;
-top:0;
-left:0;
-right:0;
-height:1em;
-font-style:italic;
-content:attr(id);
-background:rgba(51,51,51,0.4);
-}
 
-/*Inputs*/
-action {
-	display:inline-block;
-	padding:0.2em 0.5em;
-	background:#E22B46;
-	font-size:0.85em;
+loading{
+	display:block;
+	width:calc(100% - 1em);
+	height:1em;
+	left:0;
+	top:0;
 	position:relative;
-	margin:0.2em;
-	cursor:pointer;
+	background:white;
+	margin:0.5em;	
+	 background-color: rgb(43,194,83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43,194,83) 37%,
+    rgb(84,240,84) 69%
+  );
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+	
 }
 
+loading::after{
+content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-image: linear-gradient(
+    -45deg, 
+    rgba(255, 255, 255, .2) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, .2) 50%, 
+    rgba(255, 255, 255, .2) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 2s linear infinite;	
+}
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
