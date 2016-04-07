@@ -1,9 +1,10 @@
 // OBJECTS
-TOWER.OBJECT = function(name, type, master){
+
+/*TOWER.OBJECT = function(name, type, master){
 	console.log("Object Called");
 	this.name = name;
 	this.id = null;
-	this.type = type;
+	this.type = "TOWER.OBJECT";
 	this._typeName = "Object";
 	this.data = {};
 	this.storage = {
@@ -24,7 +25,7 @@ TOWER.OBJECT.prototype._init = function(){
 }
 
 
-/*TYPES*/
+
 TOWER.OBJECT.TYPES = {
 	STANDARD : {
 		origins : {
@@ -66,3 +67,4 @@ TOWER.OBJECT.TYPES = {
 	},
 	
 };
+*/

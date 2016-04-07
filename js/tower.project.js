@@ -9,6 +9,7 @@ TOWER.PROJECT = function(master, file){
 
 TOWER.PROJECT.prototype._init = function(){
 	this.name = null;
+	this.type = "TOWER.PROJECT";
 	this.sceneList = [];
 	this.initialScene = null;
 	this.activeObject = null;

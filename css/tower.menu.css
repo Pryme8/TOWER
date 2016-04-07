@@ -74,3 +74,40 @@ menu .disabled{
 	opacity:0.6;
 }
 
+toggle{
+	padding-left:1.5em;
+}
+
+toggle::before{
+	display:block;
+	position: absolute;
+	pointer-events: none;
+	content: '';
+	font-size: 0.65em;
+	height:1em;
+	width:1em;
+	border:1px solid black;
+	top:50%;
+	left:0.5em;
+	transform: translate(0,-50%);
+	border-radius: 1em;
+	-webkit-border-radius: 1em;
+}
+
+toggle.active::before{
+	display:block;
+	position: absolute;
+	pointer-events: none;
+	content: '';
+	font-size: 0.65em;
+	height:1em;
+	width:1em;
+	border:1px solid black;
+	top:50%;
+	left:0.5em;
+	transform: translate(0,-50%);
+	border-radius: 1em;
+	-webkit-border-radius: 1em;
+	background:#900;
+	
+}

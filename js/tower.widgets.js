@@ -1,5 +1,5 @@
 //Widgets
-TOWER.WIDGETS = {
+TOWER.WIDGET = {
 		horizon : function(scene){
 			console.log("Horizon Widget Built");
 			this.origin = scene.activeCamera.position;
@@ -20,21 +20,13 @@ TOWER.WIDGETS = {
 			this.lines.renderingGroupId = 0; 
 			
 			var parent = this;
+			
 			scene.registerBeforeRender(function(){
-				if($('tower second #horizon-toggle').is('.active')){
-					if(!parent.visible){
+					if(parent.visible){
 					parent.lines.setEnabled(true);
 					parent.lines.position.x = scene.activeCamera.position.x;
 					parent.lines.position.z = scene.activeCamera.position.z;	
-					}
-					parent.visible = true;
-				}else{
-					if(parent.visible){
-					parent.lines.setEnabled(false);
-					}
-					parent.visible = false;
-				}
-				
+					}			
 			});
 			
 		},
@@ -51,30 +43,16 @@ TOWER.WIDGETS = {
 			this.grid.material.lineColor = new BABYLON.Color3(0.4, 0.4, 0.4);
 			this.grid.material.opacity = 0.6;
 			
-			this.visible = true;
 			this.grid.renderingGroupId = 0; 
 			
-			var parent = this;
-			scene.registerBeforeRender(function(){
-				if($('tower second toggle#grid-toggle').is('.active')){
-					if(!parent.visible){
-					parent.grid.setEnabled(true);
-					}
-					parent.visible = true;
-				}else{
-					if(parent.visible){
-					parent.grid.setEnabled(false);
-					}
-					parent.visible = false;
-				}
-				
-			});
+		
 			
 		},
 		worldAxis : function(scene){
 			console.log("world-axis Widget Built");
 			this.id = "world-axis";
 			this.poles = {
+				parent : new BABYLON.Mesh('worldAxis',scene),
 				X : BABYLON.Mesh.CreateLines("X-Pole", [new BABYLON.Vector3(0,0,0),new BABYLON.Vector3(10,0,0)], scene),
 				Y : BABYLON.Mesh.CreateLines("Y-Pole", [new BABYLON.Vector3(0,0,0),new BABYLON.Vector3(0,10,0)], scene),
 				Z : BABYLON.Mesh.CreateLines("Z-Pole", [new BABYLON.Vector3(0,0,0),new BABYLON.Vector3(0,0,10)], scene)
@@ -83,33 +61,12 @@ TOWER.WIDGETS = {
 			this.poles.X.color = new BABYLON.Color3(1,0,0);
 			this.poles.Y.color = new BABYLON.Color3(0,1,0);
 			this.poles.Z.color = new BABYLON.Color3(0,0,1);
-			this.poles.X.renderingGroupId = 3; 
-			this.poles.Y.renderingGroupId = 3; 
-			this.poles.Z.renderingGroupId = 3;
-			
-			this.visible = true;
-			
-			
-			var parent = this;
-			scene.registerBeforeRender(function(){
-				if($('tower second toggle#world-axis-toggle').is('.active')){
-						if(!parent.visible){	
-							parent.poles.X.setEnabled(true);
-							parent.poles.Y.setEnabled(true);
-							parent.poles.Z.setEnabled(true);
-						}
-						parent.visible = true;
-										
-				}else{
-					if(parent.visible){	
-							parent.poles.X.setEnabled(false);
-							parent.poles.Y.setEnabled(false);
-							parent.poles.Z.setEnabled(false);
-						}
-					parent.visible = false;
-				}
-				
-			});
+			this.poles.X.parent = this.poles.parent;
+			this.poles.Y.parent = this.poles.parent;
+			this.poles.Z.parent = this.poles.parent;
+			this.poles.parent.renderingGroupId = 3; 
+
+	
 		},
 		localAxis : function(scene, master){
 			console.log("local-axis Widget Built");

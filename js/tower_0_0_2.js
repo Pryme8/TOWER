@@ -27,21 +27,26 @@ TOWER.prototype._buildEditor = function(){
 
 TOWER.prototype._init = function(){
 	var parent = this;	
-	this.widgets = {
-		horizon : null,
-		globalAxis : null,
-		grid : null,
-	};
+	
 	this._canvas = document.getElementById('renderCanvas');
 	this._engine = new BABYLON.Engine(this._canvas, true); 
 	this.editorLights = [];
 	this._scene = this._createScene();
-	this._activeCamera = this._scene.activeCamera;
+	this.activeCamera = this._scene.activeCamera;
 	this.project = null;
 
 	this._engine.runRenderLoop(function() {
     	parent._scene.render();
 	});
+	
+	this.widgets = {
+		horizon : new TOWER.WIDGET.horizon(this._scene),
+		worldAxis : new TOWER.WIDGET.worldAxis(this._scene),
+		grid : new TOWER.WIDGET.grid(this._scene),
+	};
+	
+	this.activeCamera.position = new BABYLON.Vector3(25, 15, -30);
+	this.activeCamera.setTarget(BABYLON.Vector3.Zero());
 
 	$(window).bind('resize', function() {
     	parent._engine.resize();
@@ -66,7 +71,50 @@ TOWER.prototype._bindings = function(){
 var parent = this;
 $('tower').bind('click', function(e){
 	var target = $(e.target);
-	//console.log(target);
+	
+	
+	if(target.is('toggle')){
+					if(!target.attr('set')){
+						target.toggleClass('active');
+					}else{
+						$('[set="'+target.attr('set')+'"]').removeClass('active');
+						target.addClass('active');
+					}
+					
+					if(target.attr('id')=='default-light-toggle'){
+								var toggleCheck = target.is('.active');
+								$.each(parent.editorLights, function(i, e){
+									e.setEnabled(toggleCheck); 	
+								});	
+					}
+					
+					if(target.attr('id')=='selected-bounding-box'){
+							var toggleCheck = target.is('.active');							
+							if(parent.project.activeObject.type == "TOWER.OBJECT"){
+							
+							}
+					}
+					
+					if(target.attr('id')=='horizon-toggle'){
+							var toggleCheck = target.is('.active');							
+							if(toggleCheck){parent.widgets.horizon.visible = true;}
+							else{parent.widgets.horizon.visible = false; parent.widgets.horizon.lines.setEnabled(false); }
+					}
+					
+					if(target.attr('id')=='grid-toggle'){
+							var toggleCheck = target.is('.active');							
+							if(toggleCheck){parent.widgets.grid.grid.setEnabled(true);}
+							else{parent.widgets.grid.grid.setEnabled(false);}
+					}
+					
+					if(target.attr('id')=='world-axis-toggle'){
+							var toggleCheck = target.is('.active');							
+							if(toggleCheck){parent.widgets.worldAxis.poles.parent.setEnabled(true);}
+							else{parent.widgets.worldAxis.poles.parent.setEnabled(false);}
+					}
+	}
+	
+	
     if(target.attr('act') && target.not('.disabled')){
 		switch(target.attr('act')){
 			case "toggle-open":

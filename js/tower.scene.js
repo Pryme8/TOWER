@@ -7,6 +7,7 @@ TOWER.SCENE = function(project){
 
 TOWER.SCENE.prototype._init = function(){
 	this.objectList = [];
+	this.type = "TOWER.SCENE";
 }
 
 

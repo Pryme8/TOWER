@@ -64,6 +64,51 @@ TOWER.ELEMENTS = {
 		'<span class="menu-top-item disabled" req="parent.project">Windows'+
 		'<span class="menu-sub">'+
 		
+		'<span class="menu-item hasSub">Views'+
+			'<span class="menu-sub">'+
+					'<span class="menu-item hasSub">Single'+
+					'<span class="menu-sub">'+
+						'<span class="menu-item"><toggle class="active" set="camera">3D Free</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">3D Point Orbit</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">3D Fixed Orbit</toggle></span>'+
+					'</span>'+
+					'</span>'+
+				
+					'<span class="menu-item hasSub">Split'+
+					'<span class="menu-sub">'+
+						'<span class="menu-item"><toggle set="camera">Top/Right</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Top/Left</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Bottom/Right</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Bottom/Left</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Front/Right</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Front/Left</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Back/Right</toggle></span>'+
+						'<span class="menu-item"><toggle set="camera">Back/Left</toggle></span>'+
+					'</span>'+
+					'</span>'+
+					'<span class="menu-item"><toggle set="camera">4 Split</toggle></span>'+
+			'</span>'+
+			'</span>'+
+			
+			'<span class="menu-item hasSub" id="widgets" >Widgets'+
+			'<span class="menu-sub">'+
+					'<span class="menu-item hasSub" >Global'+
+					'<span class="menu-sub">'+
+						'<span class="menu-item"><toggle class="active" id="horizon-toggle">horizon</toggle></span>'+
+						'<span class="menu-item"><toggle class="active" id="grid-toggle">grid</toggle></span>'+
+						'<span class="menu-item"><toggle class="active" id="world-axis-toggle">world-axis</toggle></span>'+
+						'<span class="menu-item"><toggle class="active" id="local-axis-toggle">local-axis</toggle></span>'+
+					'</span>'+
+					'</span>'+
+					
+					'<span class="menu-item"><toggle class="active" id="default-light-toggle">default light</toggle></span>'+
+					'<span class="menu-item"><toggle class="active" id="selected-bounding-box">selected box</toggle></span>'+
+					
+			'</span>'+
+			'</span>'+
+			
+			'<hr />'+		
+		
 			'<span class="menu-item">Tool Bar</span>'+
 			'<span class="menu-item hasSub" >Browser'+
 					'<span class="menu-sub">'+
